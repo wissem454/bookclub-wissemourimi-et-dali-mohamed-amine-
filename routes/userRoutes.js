@@ -1,13 +1,12 @@
 const express = require('express');
-const { registerUser, loginUser } = require('../cotrollers/userController');  // Fixed path to 'cotrollers'
+const { registerUser, loginUser } = require('../cotrollers/userController'); // Assurez-vous du bon chemin relatif
 
 const router = express.Router();
 
-// Register user route
+// Route pour l'enregistrement d'un utilisateur
 router.post('/register', registerUser);
 
-// Login user route
+// Route pour la connexion d'un utilisateur
 router.post('/login', loginUser);
 
 module.exports = router;
-

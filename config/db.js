@@ -1,24 +1,24 @@
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 
-// Load environment variables from .env file
+// Charger les variables d'environnement depuis le fichier .env
 dotenv.config();
 
-// MongoDB URI from environment variables
+// URI MongoDB depuis les variables d'environnement
 const uri = process.env.MONGO_URI;
 
 const connectDB = async () => {
     try {
-        // Connect to MongoDB Atlas using the URI
-        await mongoose.connect(uri, {
-            useNewUrlParser: true,
-            useUnifiedTopology: true,
-        });
-        console.log("Successfully connected to MongoDB Atlas");
+        // Connexion à MongoDB sans options obsolètes
+        await mongoose.connect(uri);
+        console.log("Connexion à MongoDB Atlas réussie");
     } catch (error) {
-        console.error("Error connecting to MongoDB Atlas:", error.message);
-        process.exit(1); // Exit the application if connection fails
+        console.error("Erreur de connexion à MongoDB Atlas:", error.message);
+        process.exit(1); // Quitter l'application en cas d'échec de la connexion
     }
 };
+
+module.exports = connectDB;
+
 
 module.exports = connectDB;
